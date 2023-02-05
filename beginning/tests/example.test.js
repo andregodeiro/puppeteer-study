@@ -11,6 +11,7 @@ describe('My frist puppeteer test', () => {
         const message = 'lets fill the message with some text' //you can store the message in a const or pass it as the second argument after the selector
         await page.type('#comments', message)
         await page.click('#submit-button')
+        await page.waitForSelector('.result-content')
         await page.waitForTimeout(5000)
         await browser.close()
     })
