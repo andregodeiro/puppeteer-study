@@ -6,7 +6,8 @@ describe('My frist puppeteer test', () => {
         const page = await browser.newPage()
         await page.goto('https://devexpress.github.io/testcafe/example/')
         await page.type('#developer-name', 'Godeiro', {delay: 0})
-        await page.click('#tried-test-cafe', { clickCount: 1}) //clickCount default its 1
+        await page.click('#tried-test-cafe')
+        await page.select('#preferred-interface', 'JavaScript API')
         await page.waitForTimeout(5000)
         await browser.close()
     })
