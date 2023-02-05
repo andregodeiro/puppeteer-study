@@ -8,6 +8,8 @@ describe('My frist puppeteer test', () => {
         await page.type('#developer-name', 'Godeiro', {delay: 0})
         await page.click('#tried-test-cafe')
         await page.select('#preferred-interface', 'JavaScript API')
+        const message = 'lets fill the message with some text' //you can store the message in a const or pass it as the second argument after the selector
+        await page.type('#comments', message)
         await page.waitForTimeout(5000)
         await browser.close()
     })
