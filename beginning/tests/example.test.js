@@ -7,9 +7,9 @@ describe('My frist puppeteer test', () => {
         await page.goto('http://example.com/')
         const title = await page.title()
         const url = await page.url()
+        const text = await page.$eval('h1', element => element.textContent)
 
-        console.log('Title: ' + title)
-        console.log('URL: ' + url)
+        console.log('Text in h1: ' + text)
         await browser.close()
     })
 })
