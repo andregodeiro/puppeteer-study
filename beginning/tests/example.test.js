@@ -10,9 +10,11 @@ describe('My first puppeteer test', () => {
         await page.setDefaultNavigationTimeout(20000) //this method has priority over setDefaultTimeout()
 
         await page.goto('http://google.com/')
-        await page.waitForSelector('.gLFyf') //for preventing bugs, its always good to wait for the selector that you want to use
-        await page.type('.gLFyf', 'github') //selector then the thext you ant to type
-        await page.keyboard.press('Enter', {delay: 1000}) //choose the key to press and set a delet to the action
+
+        await page.waitForXPath('//input[@Class="gLFyf"]') //here is and exemple of how to use XPath on puppeteer
+        
+        await page.type('.gLFyf', 'github') 
+        await page.keyboard.press('Enter', {delay: 1000}) 
         await page.waitForTimeout(5000)
 
         await browser.close()
