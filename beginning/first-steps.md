@@ -9,3 +9,8 @@
 #3 INSTALL PRETTIER (OPTIONAL)
 
  `npm install prettier`
+
+ #4 SETUP PACKAGE.JSON SCRIPT SECTION
+ 
+    - WITH MOCHA
+ `"node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests"`
