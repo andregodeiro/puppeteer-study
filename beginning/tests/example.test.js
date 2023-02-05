@@ -18,7 +18,9 @@ describe('My first puppeteer test', () => {
         const button = await page.$x('//input[@value="Pesquisa Google"]')
         await button[0].click()
 
-        await page.waitForFunction(() => !document.querySelector('.gNO89b')) //here we check if the element no longer exist in the page
+        await page.waitForFunction(() => !document.querySelector('.gNO89b')) //longer option
+
+        await page.waitForSelector('.gNO89b', {hidden: true, timeout: 300}) //shorter version
 
         
         await page.waitForTimeout(5000)
