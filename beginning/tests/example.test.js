@@ -9,16 +9,11 @@ describe('My first puppeteer test', () => {
         await page.setDefaultTimeout(10000) //set a default timeout
         await page.setDefaultNavigationTimeout(20000) //this method has priority over setDefaultTimeout()
 
-        await page.goto('http://example.com/')
-        const title = await page.title()
-        const url = await page.url()
-        const text = await page.$eval('h1', element => element.textContent)
-        const count = await page.$$eval('p', element => element.length)
-
-        expect(title).to.be.a('string', 'Example Domain') 
-        expect(url).to.include('example.com') 
-        expect(text).to.to.be.a('string', 'Example Doimain')
-        expect(count).to.equal(2) 
+        await page.goto('http://google.com/')
+        await page.waitForSelector('.gLFyf') //for preventing bugs, its always good to wait for the selector that you want to use
+        await page.type('.gLFyf', 'github') //selector then the thext you ant to type
+        await page.keyboard.press('Enter', {delay: 1000}) //choose the key to press and set a delet to the action
+        await page.waitForTimeout(5000)
 
         await browser.close()
     })
