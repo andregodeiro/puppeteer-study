@@ -20,7 +20,7 @@ describe('My first puppeteer test', () => {
 
         await page.waitForFunction(() => !document.querySelector('.gNO89b')) //longer option
 
-        await page.waitForSelector('.gNO89b', {hidden: true, timeout: 300}) //shorter version
+        await page.waitForSelector('.gNO89b', {hidden: true, timeout: 300   }) //shorter version
 
         
         await page.waitForTimeout(5000)
