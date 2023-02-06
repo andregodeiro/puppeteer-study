@@ -11,7 +11,9 @@ describe("Device Emulation", () => {
       devtools: false,
     });
 
-    page = await browser.newPage();
+    const context = await browser.createIncognitoBrowserContext();
+    page = await context.newPage();
+
     await page.setDefaultTimeout(10000);
     await page.setDefaultNavigationTimeout(20000);
   });
