@@ -1,6 +1,13 @@
 const puppeteer = require("puppeteer");
 const expect = require("chai").expect;
-const { click, getText, getCount } = require("../lib/helpers"); //import custom commands
+const {
+  click,
+  getText,
+  getCount,
+  typeText,
+  waitForText,
+  shouldNotExist,
+} = require("../lib/helpers"); //import custom commands
 
 describe("My first puppeteer test", () => {
   let browser;
@@ -23,18 +30,21 @@ describe("My first puppeteer test", () => {
   it("should launch the browser", async () => {
     await page.goto("http://google.com/");
 
-    const text = await getText(page, ".gNO89b"); //store methods on const
+    const text = await getText(page, ".gNO89b");
     const count = await getCount(page, ".gNO89b");
 
-    await page.waitForXPath('//input[@class="gLFyf"]');
-    const input = await page.$x('//input[@class="gLFyf"]');
-    await input[0].type("github");
+    await typeText(page, ".gNO89b", "github"); //will do the same as this block of code above.
+
+    // await page.waitForXPath('//input[@class="gLFyf"]');
+    // const input = await page.$x('//input[@class="gLFyf"]');
+    // await input[0].type("github");
 
     await page.waitForXPath('//input[@value="Pesquisa Google"]');
 
-    await click(page, ".gNO89b"); //apllying the method. page and selector as paramethers
+    await click(page, ".gNO89b");
 
-    await page.waitForSelector(".gNO89b", { hidden: true, timeout: 300 });
+    await shouldNotExist(page, ".gNO89b"); //will check if the selector disapeared of the page
+
     await page.waitForTimeout(5000);
   });
 });
